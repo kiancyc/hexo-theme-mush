@@ -1,0 +1,33 @@
+<footer class="container-fluid py-3 border-top">
+    <div class="row row-cols-1 row-cols-lg-3 g-4">
+        <div class="col d-none d-md-none d-lg-block text-left">
+            <span style="color:grey;">&nbsp;&copy;<%= date(new Date(), 'YYYY') %></span>
+            <a style="color:grey;text-decoration: none;" href="/"><%= config.title %></a>
+        </div>
+        <div class="col text-center">
+            <% if (theme.icp) { %>
+            <a style="color:grey;text-decoration: none;" href="http://beian.miit.gov.cn" target="_blank" rel="noopener">
+                <%= theme.icp %>
+            </a>
+            <% } %>
+        </div>
+        <div class="col d-none d-md-none d-lg-block text-right">
+            <% if (config.subtitle) { %>
+            <span class="text-muted"><%= config.subtitle %> - built with mush</span>
+            <% } %>
+        </div>
+    </div>
+</footer>
+
+<!-- baidu track -->
+<% if (theme.baidu_track_id){ %>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?<%= theme.baidu_track_id %>";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<% } %>
