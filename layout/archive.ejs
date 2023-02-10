@@ -82,10 +82,12 @@
                 NProgress.start()
                 this.loading = true
 
-                if(document.querySelector('meta[property="algolia:search"]')) {
-                    var {total, results} = await this.npmsearch(page, this.page_size)
+                let algolia_enabled = document.querySelector('meta[property="algolia:search"]')
+                if(algolia_enabled) {
+                    var {total, results} = await this.algoliaSearch(page, this.page_size)
+                    
                 } else {
-                    var {total, results} = await this.algoliasearch(page, this.page_size)
+                    var {total, results} = await this.npmSearch(page, this.page_size)
                 }
                 
                 this.results = results;
@@ -96,7 +98,7 @@
 
             },
             // use npms api to search npm module
-            async npmsearch(page = 1, pagesize = 10) {
+            async npmSearch(page = 1, pagesize = 10) {
                 let { total, results } = await axios.get('https://api.npms.io/v2/search', {
                     params: {
                         q: this.keyword,
@@ -123,7 +125,7 @@
 
                 return {total, results}
             },
-            async algoliasearch(page = 1, pagesize = 10) {
+            async algoliaSearch(page = 1, pagesize = 10) {
                 const algoliaConfig = document.querySelector('meta[property="algolia:search"]').dataset;
                 const client = algoliasearch(algoliaConfig.applicationId, algoliaConfig.apiKey)
                 const index = client.initIndex(algoliaConfig.indexName)
@@ -155,7 +157,7 @@
         },
         mounted() {     
             if(keyword)
-                this.search()
+                setTimeout(() => this.search(), 10)
         }
     })
 </script>
