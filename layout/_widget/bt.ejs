@@ -1,0 +1,22 @@
+<% if(theme.bt_search) { %>
+
+<div id="bt" class="mb-3" style="width:300px;height:200px;border:1px solid lightgrey">
+
+</div>
+
+<script>
+    let title = document.querySelector('.page-header > h1').innerText;
+    let movie_name = title.replace(/.*《(.*)》.*/, '$1')
+
+    if (movie_name) {
+        movie_name = encodeURIComponent(movie_name)
+
+        fetch(`https://movieland.mogucun.net/.netlify/functions/bt?movie_name=${movie_name}`)
+            .then(resp => resp.text())
+            .then(html => {
+                document.querySelector('div#bt').insertAdjacentHTML('beforeend', html)
+            })
+    }
+</script>
+
+<% } %>
