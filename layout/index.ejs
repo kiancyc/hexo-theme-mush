@@ -1,32 +1,24 @@
 <!-- homepage -->
-<div class="container mt-3">
+<div class="container mt-1">
     <div class="row">
-
         <% page.posts.each(function(post){ %>
-        <div class="card shadow rounded flex-row border-0 mt-3" style="width:100%">
-            <img class="card-img-top rounded-left" src="<%= firstimage(post) %>" style="width:160px;object-fit:cover;" />
-
-            <div class="card-body">
-                <h4 class="card-title text-truncate" title="<%= post.title %>">
-                    <%= post.title %>
-                </h4>
-                
-                <p class="card-text">
-                    <%- truncate(strip_html(post.content), {length: 80, omission: '...'}) %>
-                </p>
-
-                <span class="text-secondary"><%= date(page.date) %></span>
-
-                <a href="<%- url_for(post.path) %>" class="stretched-link"></a>
+        <div class="col-12 col-sm-6 p-2">
+            <div id="image" class="float-left m-1">
+                <img src="<%= firstimage(post) %>" class="rounded" style="height:100px;width:100px;object-fit:cover">
             </div>
+            <p class="text-truncate mb-1">
+                <b><%= post.title %></b>
+            </p>
+            <p class="text-secondary mb-1"><%- truncate(strip_html(post.content), {length: 32, omission: '...'}) %></p>
+            <p class="text-secondary"><%= date(page.date) %></p>
+            <a href="<%- url_for(post.path) %>" class="stretched-link"></a>
         </div>
         <% }) %>
-
     </div>
 </div>
 
 <!-- pagination -->
-<nav class="mt-2 d-flex justify-content-center">
+<!-- <nav class="mt-2 d-flex justify-content-center">
     <ul class="pagination">
         <%- paginator({
             prev_text: '上一页',
@@ -38,4 +30,4 @@
             current_class:'page-link active m-1',
         }) %>
     </ul>
-</nav>
+</nav> -->
