@@ -3,14 +3,19 @@
     <div class="row">
         <% page.posts.each(function(post){ %>
         <div class="col-12 col-sm-6 p-2">
+            <!-- image -->
             <div id="image" class="float-left m-1">
                 <img src="<%= firstimage(post) %>" class="rounded" style="height:100px;width:100px;object-fit:cover">
             </div>
+            <!-- title -->
             <p class="text-truncate mb-1">
                 <b><%= post.title %></b>
             </p>
+            <!-- summary -->
             <p class="text-secondary mb-1"><%- truncate(strip_html(post.content), {length: 32, omission: '...'}) %></p>
+            <!-- date -->
             <p class="text-secondary"><%= date(page.date) %></p>
+            <!-- link -->
             <a href="<%- url_for(post.path) %>" class="stretched-link"></a>
         </div>
         <% }) %>
@@ -18,7 +23,7 @@
 </div>
 
 <!-- pagination -->
-<!-- <nav class="mt-2 d-flex justify-content-center">
+<nav class="mt-2 d-flex justify-content-center">
     <ul class="pagination">
         <%- paginator({
             prev_text: '上一页',
@@ -30,4 +35,4 @@
             current_class:'page-link active m-1',
         }) %>
     </ul>
-</nav> -->
+</nav>
