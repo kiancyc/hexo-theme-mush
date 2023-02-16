@@ -1,25 +1,26 @@
 <!-- homepage -->
-<div class="container mt-1">
-    <div class="row">
-        <% page.posts.each(function(post){ %>
-        <div class="col-12 col-sm-6 p-2">
-            <!-- image -->
-            <div id="image" class="float-left m-1">
-                <img src="<%= firstimage(post) %>" class="rounded" style="height:100px;width:100px;object-fit:cover">
+<div class="container mt-2">
+    <% page.posts.each(function(post){ %>
+    <div class="card shadow mb-3">
+        <div class="row no-gutters">
+            <div class="col-4 col-sm-1">
+                <img src="<%= firstimage(post) %>" class="rounded w-100 h-100" alt="Thumbnail [100x100]" style="object-fit:cover">
             </div>
-            <!-- title -->
-            <p class="text-truncate mb-1">
-                <b><%= post.title %></b>
-            </p>
-            <!-- summary -->
-            <p class="text-secondary mb-1"><%- truncate(strip_html(post.content), {length: 32, omission: '...'}) %></p>
-            <!-- date -->
-            <p class="text-secondary"><%= date(page.date) %></p>
-            <!-- link -->
-            <a href="<%- url_for(post.path) %>" class="stretched-link"></a>
+            <div class="col-8 col-sm-11 p-1">
+                <!-- title -->
+                <h6 class="text-truncate"><%= post.title %></h6>
+                <!-- summary -->
+                <p class="text-secondary text-truncate mb-1">
+                    <%- truncate(strip_html(post.content), {length: 64, omission: '...'}) %>
+                </p>
+                <!-- date -->
+                <span class="text-secondary"><%= date(page.date) %></span>
+                <!-- link -->
+                <a href="<%- url_for(post.path) %>" class="stretched-link"></a>
+            </div>
         </div>
-        <% }) %>
     </div>
+    <% }) %>
 </div>
 
 <!-- pagination -->
