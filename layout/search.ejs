@@ -1,0 +1,132 @@
+<div id="search" class="container" style="min-height:700px">
+
+    <div class="card shadow mt-3 border-0">
+        <form class="form-inline">
+            <div class="input-group w-100">
+                <input class="form-control" name="keyword">
+                <div class="input-group-append">
+                    <button class="btn" type="submit">搜索</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <b-card v-for="(result, index) of results" :key="index" class="mt-3 shadow border-0">
+
+        <!-- title -->
+        <h4 class="card-title text-truncate" :title="result.title">
+            <a :href="result.link" class="text-dark text-decoration-none" target="_blank">
+                {{ result.title }}
+            </a>
+            <small>
+                {{ result?.version }}</small>
+            <!-- score -->
+            <span v-if="result.score" style="margin-top:0.6em">
+                <b-progress :value="result.score" variant="dark" class="w-25" style="float:right"></b-progress>
+            </span>
+        </h4>
+
+        <!-- desc -->
+        <p>
+            {{ result?.desc }}
+        </p>
+
+        <!-- flag -->
+        <p>
+            <span v-for="(desc, flag) of result.flags" :key="index">
+                <b-badge variant="warning" class="mr-1">
+                    {{ flag }}
+                </b-badge>
+            </span>
+        </p>
+
+        <!-- keyword -->
+        <p>
+            <span v-for="(keyword, index) of result.keywords" :key="index">
+                <b-badge variant="secondary" class="mr-1">
+                    {{ keyword }}
+                </b-badge>
+            </span>
+        </p>
+
+        <!-- date -->
+        <span class="text-secondary">
+            {{ dayjs(result.date).format('YYYY-M-D') }}</span>
+
+        <!-- author -->
+        <span class="text-secondary">
+            {{ result?.author }}</span>
+
+    </b-card>
+
+    <div class="mt-3" v-if="results.length">
+        <b-pagination :align="'center'" v-model="page_number" :total-rows="total" :per-page="page_size" @change="search" last-number></b-pagination>
+    </div>
+
+</div>
+
+<script>
+    // 从URL中获取搜索关键词
+    let keyword = new URLSearchParams(location.search).get(`keyword`)
+
+    // 搜索框中放入query里的搜索词
+    if (keyword)
+        document.querySelector('input').setAttribute('value', keyword)
+
+    new Vue({
+        el: 'div#search',
+        data: {
+            keyword: keyword,
+            page_number: 1,
+            page_size: 10,
+            total: 0,
+            loading: false,
+            results: []
+        },
+        methods: {
+            async search(page) {
+
+                NProgress.start()
+                this.loading = true
+
+                let {
+                    total,
+                    results
+                } = await this.algoliaSearch(page, this.page_size)
+
+                this.results = results;
+                this.total = total;
+
+                NProgress.done()
+                this.loading = false
+
+            },
+            async algoliaSearch(page = 1, pagesize = 10) {
+
+                let results = await index.search(this.keyword, {
+                    page: page - 1,
+                    hitsPerPage: pagesize,
+                })
+
+                let total = results.nbHits
+
+                results = results.hits.map(result => {
+                    return {
+                        title: result.title,
+                        date: dayjs(result.date).format('YYYY-M-D'),
+                        link: result.url
+                    }
+                })
+
+                return {
+                    total,
+                    results
+                }
+
+            }
+        },
+        mounted() {
+            this.search()
+        }
+    })
+</script>

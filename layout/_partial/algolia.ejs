@@ -1,0 +1,11 @@
+<% if(theme.algolia) { %>
+<script src="https://cdn.staticfile.org/algoliasearch/4.14.3/algoliasearch.umd.min.js"></script>
+<script>
+    const applicationID = "<%= theme.algolia.applicationID %>"
+    const apiKey = "<%= theme.algolia.apiKey %>"
+    const indexName = "<%= theme.algolia.indexName %>"
+
+    const client = algoliasearch(applicationID, apiKey)
+    const index = client.initIndex(indexName)
+</script>
+<% } %>

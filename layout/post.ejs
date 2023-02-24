@@ -36,3 +36,20 @@
         display: block;
     }
 </style>
+
+<% if(theme.algolia) { %>
+<script>
+    (async function() {
+        let result = await index.findObject(hit => hit, {
+            query: "海瑞"
+        })
+
+        index.partialUpdateObject({
+            objectID: result.objectID,
+            visit: result.visit + 1
+        }, {
+            createIfNotExists: true
+        })
+    })()
+</script>
+<% } %>
