@@ -15,3 +15,10 @@
     background-color: #6c757d;
     border-color: #6c757d;
 }
+
+@media screen and (max-width: 600px) {
+    .post.navbar {
+        visibility: hidden;
+        display: none;
+    }
+}
