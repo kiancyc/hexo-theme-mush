@@ -1,24 +1,31 @@
-<nav class="navbar navbar-expand-lg shadow d-none d-sm-flex" style="background:#be58f1">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
 
     <!-- logo -->
     <a class="navbar-brand text-white" href="/"><%= config.title %></a>
 
-    <!-- nav -->
-    <ul class="navbar-nav mr-auto">
-        <% for (var i in theme.menu) { %>
-        <li class="nav-item">
-            <a class="nav-link text-white" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
-        </li>
-        <% } %>
+    <!-- more -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMore" aria-controls="navbarMore" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <!--
-        <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" href="/archives/">
-                <i class="bi-search mr-1"></i>搜索
-            </a>
-        </li>    
-        -->
-    </ul>
+    <!-- nav -->
+    <div class="collapse navbar-collapse" id="navbarMore">
+        <ul class="navbar-nav mr-auto">
+            <% for (var i in theme.menu) { %>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+            </li>
+            <% } %>
+
+            <!--
+            <li class="nav-item">
+                <a class="nav-link text-white" aria-current="page" href="/archives/">
+                    <i class="bi-search mr-1"></i>搜索
+                </a>
+            </li>    
+            -->
+        </ul>
+    </div>
 
     <!-- search -->
     <!-- <form class="form-inline my-2 my-lg-0">
