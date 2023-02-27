@@ -35,3 +35,18 @@
     })();
 </script>
 <% } %>
+
+<!-- google track -->
+<% if (theme.google_track_id){ %>
+<script async src="https://www.googletagmanager.com/gtag/js?id=<%= theme.baidu_track_id %>"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', '<%= theme.baidu_track_id %>');
+</script>
+<% } %>
