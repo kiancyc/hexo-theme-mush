@@ -27,9 +27,7 @@
         </h4>
 
         <!-- desc -->
-        <p>
-            {{ result?.desc }}
-        </p>
+        <p v-html="result?.desc" :title="result?.body"></p>
 
         <!-- flag -->
         <p>
@@ -108,12 +106,14 @@
                     hitsPerPage: pagesize,
                 })
 
-                let total = results.nbHits
-
+                let total = results.nbHits;
+                console.log(results)
                 results = results.hits.map(result => {
                     return {
                         title: result.title,
                         date: dayjs(result.date).format('YYYY-M-D'),
+                        desc: result._snippetResult.content.value,
+                        body: result._highlightResult.content.value,
                         link: result.url
                     }
                 })
@@ -126,9 +126,10 @@
             }
         },
         mounted() {
-            if(!index)
+            if (!index)
                 this.loading = true;
-            // this.search(1)
+            if (keyword)
+                this.search(1)
         }
     })
 </script>
