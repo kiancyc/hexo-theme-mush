@@ -7,19 +7,19 @@
         </div>
 
         <div class="col text-center">
+            <% if (config.subtitle) { %>
+            <span class="text-muted"><%= config.subtitle %></span>
+            <% } %>
+        </div>
+
+        <div class="col d-none d-md-none d-lg-block text-right">
             <% if (theme.icp) { %>
             <a style="color:grey;text-decoration: none;" href="http://beian.miit.gov.cn" target="_blank" rel="noopener">
                 <%= theme.icp %>
             </a>
             <% } %>
         </div>
-        
-        <div class="col d-none d-md-none d-lg-block text-right">
-            <% if (config.subtitle) { %>
-            <span class="text-muted"><%= config.subtitle %></span>
-            <% } %>
-        </div>
-        
+
     </div>
 </footer>
 

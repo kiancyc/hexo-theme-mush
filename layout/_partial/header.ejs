@@ -5,12 +5,12 @@
 
     <!-- nav -->
     <ul class="navbar-nav mr-auto">
+        <% for (var i in theme.menu) { %>
         <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" href="/">首页</a>
+            <a class="nav-link text-white" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" href="/search/">搜索</a>
-        </li>
+        <% } %>
+
         <!--
         <li class="nav-item">
             <a class="nav-link text-white" aria-current="page" href="/archives/">
@@ -21,22 +21,22 @@
     </ul>
 
     <!-- search -->
-    <form class="form-inline my-2 my-lg-0">
+    <!-- <form class="form-inline my-2 my-lg-0">
         <div class="input-group">
             <input class="form-control" name="keyword" style="background:none;color:white;width:20vw">
             <div class="input-group-append">
                 <button class="btn btn-outline-light" type="submit">搜索</button>
             </div>
         </div>
-    </form>
+    </form> -->
 
 </nav>
 
 <script>
-    document.querySelector("form").addEventListener('submit', e => {
-        e.preventDefault()
-        const data = new FormData(e.target)
-        let keyword = data.get('keyword')
-        window.location = `/archives/?keyword=${keyword}`
-    })
+    // document.querySelector("form").addEventListener('submit', e => {
+    //     e.preventDefault()
+    //     const data = new FormData(e.target)
+    //     let keyword = data.get('keyword')
+    //     window.location = `/archives/?keyword=${keyword}`
+    // })
 </script>

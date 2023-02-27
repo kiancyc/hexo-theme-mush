@@ -1,0 +1,145 @@
+/* https://lingtalfi.com/bootstrap4-color-generator */
+
+/*------------------------------------
+- COLOR primary
+------------------------------------*/
+.alert-primary {
+    color: #35064c;
+    background-color: #dba1f7;
+    border-color: #d38ef6;
+}
+
+.alert-primary hr {
+    border-top-color: #ca76f4;
+}
+
+.alert-primary .alert-link {
+    color: #14021d;
+}
+
+.badge-primary {
+    color: #fff;
+    background-color: #840fbe;
+}
+
+.badge-primary[href]:hover, .badge-primary[href]:focus {
+    color: #fff;
+    background-color: #630b8e;
+}
+
+.bg-primary {
+    background-color: #840fbe !important;
+}
+
+a.bg-primary:hover, a.bg-primary:focus,
+button.bg-primary:hover,
+button.bg-primary:focus {
+    background-color: #630b8e !important;
+}
+
+.border-primary {
+    border-color: #840fbe !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #840fbe;
+    border-color: #840fbe;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #6d0c9c;
+    border-color: #630b8e;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(132, 15, 190, 0.5);
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #840fbe;
+    border-color: #840fbe;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #630b8e;
+    border-color: #590a80;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(132, 15, 190, 0.5);
+}
+
+.btn-outline-primary {
+    color: #840fbe;
+    background-color: transparent;
+    border-color: #840fbe;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #840fbe;
+    border-color: #840fbe;
+}
+
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(132, 15, 190, 0.5);
+}
+
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+    color: #840fbe;
+    background-color: transparent;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #840fbe;
+    border-color: #840fbe;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(132, 15, 190, 0.5);
+}
+
+.list-group-item-primary {
+    color: #35064c;
+    background-color: #d38ef6;
+}
+
+.list-group-item-primary.list-group-item-action:hover, .list-group-item-primary.list-group-item-action:focus {
+    color: #35064c;
+    background-color: #ca76f4;
+}
+
+.list-group-item-primary.list-group-item-action.active {
+    color: #fff;
+    background-color: #35064c;
+    border-color: #35064c;
+}
+
+.table-primary,
+.table-primary > th,
+.table-primary > td {
+    background-color: #d38ef6;
+}
+
+.table-hover .table-primary:hover {
+    background-color: #ca76f4;
+}
+
+.table-hover .table-primary:hover > td,
+.table-hover .table-primary:hover > th {
+    background-color: #ca76f4;
+}
+
+.text-primary {
+    color: #840fbe !important;
+}
+
+a.text-primary:hover, a.text-primary:focus {
+    color: #630b8e !important;
+}
+

@@ -1,11 +1,11 @@
 <div id="search" class="container" style="min-height:700px">
 
-    <div class="card shadow mt-3 border-0">
-        <form class="form-inline">
-            <div class="input-group w-100">
-                <input class="form-control" name="keyword">
+    <div class="card d-flex justify-content-center align-items-center mt-3 border-0 shadow bg-transparent">
+        <form class="form-inline" style="height:80px;">
+            <div class="input-group">
+                <input class="form-control" name="keyword" v-model="keyword">
                 <div class="input-group-append">
-                    <button class="btn" type="submit">搜索</button>
+                    <button :disabled="loading" class="btn btn-primary" type="submit" @click="search(1)">搜索</button>
                 </div>
             </div>
         </form>
@@ -126,7 +126,9 @@
             }
         },
         mounted() {
-            this.search()
+            if(!index)
+                this.loading = true;
+            // this.search(1)
         }
     })
 </script>
