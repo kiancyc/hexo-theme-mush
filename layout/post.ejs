@@ -42,26 +42,26 @@
 <script>
     (async function() {
         // get title
-        let title = document.querySelector('article h1').text;
+        // let title = document.querySelector('article h1').text;
 
         // get count
-        let result = await index.findObject(hit => hit, {
-            query: title
-        })
+        // let result = await index.findObject(hit => hit, {
+        //     query: title
+        // })
 
-        let id = result.object.objectID;
-        let visit = result.object.visit || 0;
+        // let id = result.object.objectID;
+        // let visit = result.object.visit || 0;
 
         // show visit count
-        document.querySelector('#visit').textContent = visit;
+        // document.querySelector('#visit').textContent = visit;
 
         // add visit count
-        index.partialUpdateObject({
-            objectID: id,
-            visit: visit + 1
-        }, {
-            createIfNotExists: true
-        })
+        // index.partialUpdateObject({
+        //     objectID: id,
+        //     visit: visit + 1
+        // }, {
+        //     createIfNotExists: true
+        // })
     })()
 </script>
 <% } %>
