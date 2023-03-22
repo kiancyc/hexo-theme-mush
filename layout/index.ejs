@@ -1,26 +1,29 @@
 <!-- homepage -->
 <div class="container mt-2">
     <div class="row">
-    <% page.posts.each(function(post){ %>
-    <div class="col-12 col-md-6 col-lg-4 mb-3">
-        <div class="card shadow h-100">
-            <img class="card-img-top" src="<%= firstimage(post) %>" style="object-fit:cover;height:12rem">
-            <div class="card-body">
-                <!-- title -->
-                <h6 class="card-title mb-0"><%= post.title %></h6>
-                <!-- summary -->
-                <!-- <p class="card-text text-secondary text-truncate"> -->
+        <% page.posts.each(function(post){ %>
+        <div class="col-12 col-md-6 col-lg-4 mb-3">
+            <div class="card shadow h-100">
+                <img class="card-img-top" src="<%= firstimage(post) %>" style="object-fit:cover;height:12rem">
+                <div class="card-body">
+                    <!-- title -->
+                    <h6 class="card-title mb-0"><%= post.title %></h6>
+                    <!-- summary -->
+                    <!-- <p class="card-text text-secondary text-truncate"> -->
                     <%- // truncate(strip_html(post.content), {length: 64, omission: '...'}) %>
-                <!-- </p> -->
-                <!-- link -->
-                <a href="<%- url_for(post.path) %>" class="stretched-link"></a>
+                    <!-- </p> -->
+                    <!-- link -->
+                    <a href="<%- url_for(post.path) %>" class="stretched-link"></a>
+                </div>
+                <div class="card-footer text-muted">
+                    <span class="text-secondary">
+                        <%- list_categories(post.categories, {style: false, class:'text-muted ', show_count:true}) %>
+                    </span>
+                    <span class="text-secondary float-right"><%= date(page.date) %></span>
+                </div>
             </div>
-            <div class="card-footer text-muted">
-                <span class="text-secondary"><%= date(page.date) %></span>
-            </div>            
         </div>
-    </div>
-    <% }) %>
+        <% }) %>
     </div>
 </div>
 
