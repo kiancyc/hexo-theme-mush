@@ -1,4 +1,5 @@
-<!-- homepage -->
+<%= page.category %>
+
 <div class="container mt-2">
     <div class="row">
         <% page.posts.each(function(post){ %>
@@ -19,25 +20,10 @@
                     <span class="text-secondary">
                         <%- list_categories(post.categories, {style: false, class:'text-muted ', show_count:false}) %>
                     </span>
-                    <span class="text-secondary float-right"><%= date(post.date) %></span>
+                    <span class="text-secondary float-right"><%= date(page.date) %></span>
                 </div>
             </div>
         </div>
         <% }) %>
     </div>
 </div>
-
-<!-- pagination -->
-<nav class="mt-2 d-flex justify-content-center">
-    <ul class="pagination">
-        <%- paginator({
-            prev_text: '上一页',
-            next_text: '下一页',
-            page_class:'page-link m-1',
-            prev_class:'page-link m-1',
-            next_class:'page-link m-1',
-            space_class:'page-link m-1',
-            current_class:'page-link active m-1',
-        }) %>
-    </ul>
-</nav>

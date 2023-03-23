@@ -8,7 +8,10 @@
             </div>
 
             <div class="text-secondary">
-                发布时间：
+                分类:
+                <%- list_categories(page.categories, {style: false, class:'text-muted ', show_count:false}) %>
+
+                时间:
                 <time datetime="<%= date_xml(page.date) %>" itemprop="datePublished">
                     <%= date(page.date) %>
                 </time>

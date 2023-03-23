@@ -1,0 +1,26 @@
+<style>
+    .category-list-count {
+        color: #bbb !important;
+    }
+
+    .category-list-count::before {
+        content: ' (';
+        display: inline;
+    }
+
+    .category-list-count::after {
+        content: ') ';
+        display: inline;
+    }
+</style>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="card col-12 p-2 shadow">
+            <div style="margin: 0 auto;">
+                <h1 class="mb-3">目前共计 <%= site.categories.length %> 个分类</h1>
+                <%- list_categories({style: 'list', class:'text-muted category', show_count:true}) %>
+            </div>
+        </div>
+    </div>
+</div>
