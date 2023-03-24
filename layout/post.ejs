@@ -15,6 +15,9 @@
                 <time datetime="<%= date_xml(page.date) %>" itemprop="datePublished">
                     <%= date(page.date) %>
                 </time>
+
+                阅读:
+                <span id="visit"></span>
             </div>
 
             <br>
@@ -41,30 +44,25 @@
     }
 </style>
 
-<% if(theme.algolia) { %>
 <script>
+    // read count
     (async function() {
-        // get title
-        // let title = document.querySelector('article h1').text;
+        // title
+        let title = document.querySelector('h1').innerText
 
-        // get count
-        // let result = await index.findObject(hit => hit, {
-        //     query: title
-        // })
+        // read
+        let res = await fetch(`https://keyvalue.immanuel.co/api/KeyVal/GetValue/879xnsga/${title}`).then(res => res.json())
+        let count = res || 0;
+        let new_count = Number(count) + 1;
 
-        // let id = result.object.objectID;
-        // let visit = result.object.visit || 0;
+        // update
+        // await fetch(``)
+        await fetch(`https://keyvalue.immanuel.co/api/KeyVal/UpdateValue/879xnsga/${title}/${new_count}`, {
+            method: 'POST'
+        })
 
-        // show visit count
-        // document.querySelector('#visit').textContent = visit;
+        // show
+        document.querySelector('#visit').innerText = new_count;
 
-        // add visit count
-        // index.partialUpdateObject({
-        //     objectID: id,
-        //     visit: visit + 1
-        // }, {
-        //     createIfNotExists: true
-        // })
     })()
 </script>
-<% } %>
