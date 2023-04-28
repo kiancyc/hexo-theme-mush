@@ -16,8 +16,8 @@
                     <%= date(page.date) %>
                 </time>
 
-                阅读:
-                <span id="visit"></span>
+                <!-- 阅读: -->
+                <!-- <span id="visit"></span> -->
             </div>
 
             <br>
@@ -48,21 +48,21 @@
     // read count
     (async function() {
         // title
-        let title = document.querySelector('h1').innerText
+        // let title = document.querySelector('h1').innerText
 
         // read
-        let res = await fetch(`https://keyvalue.immanuel.co/api/KeyVal/GetValue/879xnsga/${title}`).then(res => res.json())
-        let count = res || 0;
-        let new_count = Number(count) + 1;
+        // let res = await fetch(`https://keyvalue.immanuel.co/api/KeyVal/GetValue/879xnsga/${title}`).then(res => res.json())
+        // let count = res || 0;
+        // let new_count = Number(count) + 1;
 
         // update
         // await fetch(``)
-        await fetch(`https://keyvalue.immanuel.co/api/KeyVal/UpdateValue/879xnsga/${title}/${new_count}`, {
-            method: 'POST'
-        })
+        // await fetch(`https://keyvalue.immanuel.co/api/KeyVal/UpdateValue/879xnsga/${title}/${new_count}`, {
+        //     method: 'POST'
+        // })
 
         // show
-        document.querySelector('#visit').innerText = new_count;
+        // document.querySelector('#visit').innerText = new_count;
 
     })()
 </script>
